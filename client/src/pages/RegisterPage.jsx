@@ -4,13 +4,19 @@ import { useState } from "react";
 
 export default function RegisterPage() {
     
-    const registerUser = (e) => {
+    const registerUser = async (e) => {
         e.preventDefault();
-        axios.post('/register' , {
-            name, 
-            email, 
-            password
-        })
+        try {
+            await axios.post('/register' , {
+                name, 
+                email, 
+                password
+            })
+            
+            alert('Registration successful. Now you can log in');
+        } catch(e) {
+            alert('Registration failed. Please try again later.');
+        }
     }
 
     const [name, setName] = useState('');
