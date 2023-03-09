@@ -83,6 +83,13 @@ app.post('/login', async (req,res) => {
     }
 })
 
+app.post('/logout', (req, res)=> {
+    res.cookie('token', '').json(true);
+})
+
+app.post('/upload-by-link', (req, res) => {
+    const {link} = req.body;
+})
 
 app.listen(PORT);
 console.log(`Listening on port ${PORT}`);
