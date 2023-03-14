@@ -227,8 +227,6 @@ app.put('/places', async (req, res) => {
 
 app.get('/places/:id', async (req, res) => {
     const {id} = req.params;
-    console.log(id);
-    console.log("Running the server function");
     res.json(await PlaceModel.findById(id));
 })
 
