@@ -11,6 +11,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import multer from "multer"
 import PlaceModel from "./models/Place.js"
+import BookingModel from "./models/Booking.js"
 
 const bcryptSalt = bcrypt.genSaltSync();
 const jwtSecret = "fjoifj39fjd9sajf93";
@@ -86,6 +87,15 @@ async function downloadImageWithLink(url) {
         responseType: "arraybuffer"
     })
     return response;
+}
+
+function getUserDataFromToken(req) {
+    return new Promise((resolve, reject) => {
+        jwt.verify(req.cookies.token, jwtSecret, {}, async (err, data) => {
+            if (err) throw err;
+            resolve(data) 
+        });
+    })
 }
 
 app.get('/profile', (req, res) => {
@@ -228,6 +238,24 @@ app.put('/places', async (req, res) => {
 app.get('/places/:id', async (req, res) => {
     const {id} = req.params;
     res.json(await PlaceModel.findById(id));
+})
+
+app.post('/bookings', async (req, res) => {
+    const userData = await getUserDataFromToken(req);
+    
+    const {checkIn, checkOut, place, numberOfGuests, name, phone, price} = req.body;
+    BookingModel.create({
+        place, checkIn, checkOut, numberOfGuests, name, phone, price, user: userData.id
+    }).then((doc) => {
+        res.status(200).json(doc);
+    }).catch((err) => {
+        throw err;
+    })
+})
+
+app.get('/bookings', async (req, res) => {
+    const userData = await getUserDataFromToken(req);
+    res.json(await BookingModel.find({user: userData.id}).populate('place'))
 })
 
 app.listen(PORT);
