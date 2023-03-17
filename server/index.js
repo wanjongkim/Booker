@@ -226,8 +226,8 @@ app.put('/places', async (req, res) => {
         const placeDoc = await PlaceModel.findById(id);
         if (data.id === placeDoc.owner.toString()) {
             placeDoc.set({
-                title, address, photos:addedPhotos, description,
-                perks, extraInfo, checkIn, checkOut, maxGuests, price
+                maxGuests, title, address, photos:addedPhotos, description,
+                perks, extraInfo, checkIn, checkOut, price
             })
             await placeDoc.save();
             res.json('saved');

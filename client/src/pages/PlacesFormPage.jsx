@@ -105,7 +105,7 @@ export default function PlacesFormPage() {
                     <PhotosUploader addedPhotos={addedPhotos} onChange={setAddedPhotos}/>
                     <h2 className="text-2xl mt-4">Descriptions</h2>
                     <p className="text-gray-500 text-sm">descriptions of the place</p>
-                    <textarea value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
+                    <textarea className="py-2 px-4" value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
                     <h2 className="text-2xl mt-4">Perks</h2>
                     <p className="text-gray-500 text-sm">Select all the perks of the place</p>
                     <div className="grid mt-2 gap-2 grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
@@ -113,8 +113,8 @@ export default function PlacesFormPage() {
                     </div> 
                     <h2 className="text-2xl mt-4">Extra info</h2>
                     <p className="text-gray-500 text-sm">House rules, etc</p>
-                    <textarea value={extraInfo} onChange={(e)=> setExtraInfo(e.target.value)}></textarea>
-                    <h2 className="text-2xl mt-4">Check in&out times</h2>
+                    <textarea className="py-2 px-4" value={extraInfo} onChange={(e)=> setExtraInfo(e.target.value)}></textarea>
+                    <h2 className="text-2xl mt-4">Check in & out times</h2>
                     <p className="text-gray-500 text-sm">add check in and out times, remember to have some time
                     window for cleaning the room between guests </p>
                     <div className="grid gap-2 grid-cols-2 md:grid-cols-4">
