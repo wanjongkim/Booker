@@ -20,14 +20,14 @@ export default function BookingsPage() {
             <AccountNav />
             <div>
                 {bookings?.length > 0 && bookings.map((booking, index) => (
-                    <Link to={`/account/bookings/${booking._id}`} className="flex gap-4 bg-gray-200 rounded-2xl overflow-hidden" key={index}>
-                        <div className="w-48">
+                    <Link to={`/account/bookings/${booking._id}`} className="flex flex-col gap-4 md:flex-row bg-gray-200 rounded-2xl overflow-hidden" key={index}>
+                        <div className="max-w-md">
                             <PlaceImg src={booking.place} />
                         </div>
-                        <div className="py-3 pr-3 grow">
+                        <div className="py-3 pr-3 grow pl-3">
                             <h2 className="text-xl">{booking.place.title}</h2>
                             <div className="text-xl">
-                                <BookingDates booking={booking} className="mb-2 mt-4 text-gray-500"/>
+                                <BookingDates booking={booking} className="mb-2 mt-4 flex flex-col text-gray-500"/>
                                 
                                 <div className="flex gap-1">
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

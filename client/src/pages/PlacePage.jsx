@@ -8,7 +8,7 @@ import PlaceGallery from "../PlaceGallery";
 export default function PlacePage() {
     const {id} = useParams();
     const [place, setPlace] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isHiding, setIsHiding] = useState(false);
     
     useEffect(() => {
         if(!id) {
@@ -22,33 +22,34 @@ export default function PlacePage() {
     if(!place) return '';
 
     return (
-        <div className="mt-4 bg-gray-100 -mx-8 px-8 pt-8">
+        <div className="mt-4 bg-gray-100 px-3 pt-8">
             <h1 className="text-3xl">{place?.title}</h1>
             
             <AddressLink>{place.address}</AddressLink>
 
-            <PlaceGallery place={place} />
-            <div className="mt-8 gap-8 mb-8 grid grid-cols-1 md:grid-cols-[2fr_1fr]">
-                <div>
-                    <div className="my-4">
-                        <h2 className="font-semibold text-2xl">Description</h2>
-                        {place?.description}
+            <PlaceGallery place={place} setIsHiding={setIsHiding}/>
+            <div className={(isHiding ? 'hidden' : '')}>
+                <div className="mt-8 gap-8 mb-8 grid grid-cols-1 md:grid-cols-[2fr_1fr]">
+                    <div>
+                        <div className="my-1">
+                            <h2 className="font-semibold text-2xl">Description</h2>
+                            <pre className="my-3 font-sans">{place?.description}</pre>
+                        </div>
+                        Check-in: {place?.checkIn} <br />
+                        Check-out: {place?.checkOut} <br />
+                        Max number of guests: {place?.maxGuests}
                     </div>
-                    Check-in: {place?.checkIn} <br />
-                    Check-out: {place?.checkOut} <br />
-                    Max number of guests: {place?.maxGuests}
+                    <div>
+                        <BookingWidget place={place} />
+                    </div>
                 </div>
-                <div>
-                    <BookingWidget place={place} />
+                <div className="bg-white -mx-8 px-8 py-8 border-t">
+                    <div>
+                        <h2 className="font-semibold text-2xl">Extra Info</h2>
+                    </div>
+                    <div className="mb-4 text-sm mt-2 text-gray-700 leading-5">{place?.extraInfo}</div>
                 </div>
             </div>
-            <div className="bg-white -mx-8 px-8 py-8 border-t">
-                <div>
-                    <h2 className="font-semibold text-2xl">Extra Info</h2>
-                </div>
-                <div className="mb-4 text-sm mt-2 text-gray-700 leading-5">{place?.extraInfo}</div>
-            </div>
-            
         </div>
     )
 }

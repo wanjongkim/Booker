@@ -1,9 +1,0 @@
-.more-pictures {
-    left: 20rem;
-}
-
-@media only screen and (max-width: 700px) {
-    .more-pictures {
-
-    }
-}

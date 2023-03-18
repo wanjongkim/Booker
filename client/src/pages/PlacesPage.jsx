@@ -33,7 +33,7 @@ const PlacesPage = () => {
                         </div>
                         <div className="grow-0 shrink">
                             <h2 className="text-xl">{place.title}</h2>
-                            <pre className="text-sm mt-2 break-words" >{`${place.description.substring(0, MAX_LENGTH_CHARACTERS)}`} {place.description.length > MAX_LENGTH_CHARACTERS ? 
+                            <pre className="font-sans text-sm mt-2 break-words" >{`${place.description.substring(0, MAX_LENGTH_CHARACTERS)}`} {place.description.length > MAX_LENGTH_CHARACTERS ? 
                             <button className="font-semibold"><br />Show more &#8594;</button> : null}</pre>
                         </div>
                     </Link>

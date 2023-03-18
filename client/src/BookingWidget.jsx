@@ -45,12 +45,12 @@ export default function BookingWidget({place}) {
                 Price: ${place?.price} / per night
             </div>
             <div className="border rounded-2xl mt-4">
-                <div className="flex">
+                <div className="flex flex-col">
                     <div className="py-3 px-4">
                         <label>Check in:</label>
                         <input type="date" value={checkIn} onChange={(e) => setCheckIn(e.target.value)}/>
                     </div>
-                    <div className="py-3 px-4 border-l">
+                    <div className="py-3 px-4 border-t">
                         <label>Check out:</label>
                         <input type="date" value={checkOut} onChange={(e) => setCheckOut(e.target.value)}/>
                     </div>

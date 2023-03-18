@@ -3,7 +3,7 @@ import Header from "./Header";
 
 export default function Layout() {
     return (
-        <div className="py-4 px-1 flex flex-col min-h-screen max-w-screen-2xl m-auto border">
+        <div className="py-4 px-1 flex flex-col min-h-screen max-w-screen-2xl m-auto">
             <Header />
             <Outlet />
         </div>
