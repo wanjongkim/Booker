@@ -13,7 +13,7 @@ import PlacePage from './pages/PlacePage';
 import BookingsPage from './pages/BookingsPage';
 import BookingPage from './pages/BookingPage';
 
-axios.defaults.baseURL = 'http://localhost:3001'
+axios.defaults.baseURL = "https://booker-xqry.onrender.com";
 axios.defaults.withCredentials = true;
 
 function App() {
