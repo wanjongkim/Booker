@@ -29,7 +29,7 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
     credentials: true,
-    origin: 'http://localhost:3000'
+    origin: 'https://booker-frontend.onrender.com/'
 }));
 const PORT = 3001;
 
