@@ -27,9 +27,15 @@ const DB_URL = process.env.DB_URL;
 
 app.use(express.json())
 app.use(cookieParser())
+/*
 app.use(cors({
     credentials: true,
     origin: 'https://booker-frontend.onrender.com'
+}));
+*/
+app.use(cors({
+    credentials: true,
+    origin: 'http://localhost:3000'
 }));
 const PORT = 3001;
 
@@ -127,7 +133,6 @@ app.post('/register', async (req, res) => {
 
 app.post('/login', async (req,res) => {
     const {email, password} = req.body;
-    
     try {
         const userDoc = await UserModel.findOne({email})    
         if (userDoc) {

@@ -15,9 +15,15 @@ export default function LoginPage() {
         e.preventDefault();
         try {
             const {data} = await axios.post('/login', {email, password})
-            setUser(data);
-            alert("Login successful");
-            setRedirect(true);
+            if(data==="Not Found") {
+                alert("Login failed");
+            }
+            else {
+                setUser(data);
+                alert("Login successful");
+                setRedirect(true);
+            }
+            
         } catch (err) {
             alert("Login failed");
         }
